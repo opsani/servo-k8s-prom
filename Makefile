@@ -1,5 +1,5 @@
 IMG_NAME ?= opsani/servo-k8s-prom
-IMG_TAG ?= v4
+IMG_TAG ?= measure-only
 
 container:
 	docker build . -t $(IMG_NAME):$(IMG_TAG)
