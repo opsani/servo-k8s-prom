@@ -7,7 +7,7 @@ RUN pip3 install requests PyYAML
 
 ADD  https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
-ADD https://raw.githubusercontent.com/opsani/servo-k8s/master/adjust \
+ADD https://raw.githubusercontent.com/opsani/servo-k8s/no-resources/adjust \
     https://raw.githubusercontent.com/opsani/servo-prom/master/measure \
     https://raw.githubusercontent.com/opsani/servo/master/adjust.py \
     https://raw.githubusercontent.com/opsani/servo/master/measure.py \
