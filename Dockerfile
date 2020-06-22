@@ -20,7 +20,8 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py /servo/meas
 
 RUN chmod a+rx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl && \
     chmod a+r /servo/adjust.py /servo/measure.py && \
-    chmod a+rx /servo/measure.d/measure-prometheus /servo/measure.d/measure-exec /servo/measure.d/measure.py
+    chmod a+rx /servo/measure.d/measure-prometheus /servo/measure.d/measure-exec && \
+    chmod a+r /servo/measure.d/measure.py
  	
 ENV PYTHONUNBUFFERED=1
 
