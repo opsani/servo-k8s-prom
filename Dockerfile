@@ -5,6 +5,10 @@ WORKDIR /servo
 # Install required packages
 RUN pip3 install requests PyYAML
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		curl \
+	&& rm -rf /var/lib/apt/lists/*
+
 ADD  https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
 ADD https://raw.githubusercontent.com/opsani/servo-k8s/master/adjust \
@@ -18,10 +22,13 @@ ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure /servo/me
 ADD https://raw.githubusercontent.com/opsani/servo-exec/master/measure /servo/measure.d/measure-exec
 ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py /servo/measure.d/
 
+ADD testrun.pl /servo
+
 RUN chmod a+rx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl && \
     chmod a+r /servo/adjust.py /servo/measure.py && \
     chmod a+rx /servo/measure.d/measure-prometheus /servo/measure.d/measure-exec && \
-    chmod a+r /servo/measure.d/measure.py
+    chmod a+r /servo/measure.d/measure.py && \
+    chmod a+rx /servo/testrun.pl
  	
 ENV PYTHONUNBUFFERED=1
 
