@@ -14,14 +14,14 @@ ADD https://raw.githubusercontent.com/opsani/servo-k8s/master/adjust \
     https://raw.githubusercontent.com/opsani/servo/master/servo \
     /servo/
 
-ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure \
-    https://raw.githubusercontent.com/opsani/servo-exec/master/measure \
-    https://raw.githubusercontent.com/opsani/servo/master/measure.py \
-    /servo/measure.d/
+ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure /servo/measure.d/measure-prometheus
+ADD https://raw.githubusercontent.com/opsani/servo-exec/master/measure /servo/measure.d/measure-exec
+ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py /servo/measure.d/
 
 RUN chmod a+rx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl && \
- 	chmod a+r /servo/adjust.py /servo/measure.py
-
+    chmod a+r /servo/adjust.py /servo/measure.py \
+    chmod a+rx /servo/measure.d/measure-prometheus /servo/measure.d/measure-exec /servo/measure.d/measure.py
+ 	
 ENV PYTHONUNBUFFERED=1
 
 ENTRYPOINT [ "python3", "servo" ]
