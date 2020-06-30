@@ -7,6 +7,7 @@ RUN pip3 install requests PyYAML
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		curl \
+        procps \
 	&& rm -rf /var/lib/apt/lists/*
 
 ADD  https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
