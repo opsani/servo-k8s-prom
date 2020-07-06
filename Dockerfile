@@ -1,6 +1,13 @@
+FROM golang:1.14 AS builder
+WORKDIR /go/src/tester
+COPY /go/src/tester /go/src/tester 
+RUN go build tester
+
 FROM python:3.6-slim
 
 WORKDIR /servo
+
+COPY --from=builder /go/src/tester/tester .
 
 # Install required packages
 RUN pip3 install requests PyYAML
@@ -29,7 +36,7 @@ RUN chmod a+rx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl 
     chmod a+r /servo/adjust.py /servo/measure.py && \
     chmod a+rx /servo/measure.d/measure-prometheus /servo/measure.d/measure-exec && \
     chmod a+r /servo/measure.d/measure.py && \
-    chmod a+rx /servo/testrun.pl
+    chmod a+rx /servo/tester
  	
 ENV PYTHONUNBUFFERED=1
 
