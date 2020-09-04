@@ -12,6 +12,9 @@ RUN pip3 install requests PyYAML python-dateutil
 ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure /servo/measure.d/prom-opsani
 ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure /servo/measure.d/prom-ethos
 
+# add environment driver
+ADD https://raw.githubusercontent.com/opsani/servo-k8senv/master/environment /servo/
+
 # add magg driver
 RUN mkdir -p measure.d
 ADD https://raw.githubusercontent.com/opsani/servo-magg/master/measure /servo/
@@ -35,7 +38,7 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/servo \
     /servo/
 
 RUN ln -s /servo/adjust.d/adjust.py /servo/adjust.py
-RUN chmod a+rwx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl
+RUN chmod a+rwx /servo/adjust /servo/measure /servo/servo /servo/environment /usr/local/bin/kubectl
 RUN chmod a+rwx /servo/measure.d/prom-opsani /servo/measure.d/prom-ethos
 RUN chmod a+r /servo/adjust.py /servo/measure.py
 RUN chmod a+rx /servo/adjust.d/k8s-adjust-canary
