@@ -22,7 +22,6 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py measure.d/
 # add agg driver
 RUN mkdir -p adjust.d
 ADD https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust \
-    https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust.py \
     https://raw.githubusercontent.com/opsani/servo-agg/demo/util.py \
     /servo/
 
