@@ -28,8 +28,8 @@ ADD https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust \
 
 # add k8s driver under different names
 ADD https://raw.githubusercontent.com/opsani/servo/master/adjust.py  /servo/adjust.d/
-ADD https://raw.githubusercontent.com/opsani/servo-k8s/status-rejected-onfail-destroy/adjust /servo/adjust.d/k8s-adjust-canary
-ADD https://raw.githubusercontent.com/opsani/servo-k8s/status-rejected-onfail-destroy/adjust /servo/adjust.d/k8s-adjust-main
+ADD https://raw.githubusercontent.com/opsani/servo-k8s/master/adjust /servo/adjust.d/k8s-adjust-canary
+ADD https://raw.githubusercontent.com/opsani/servo-k8s/master/adjust /servo/adjust.d/k8s-adjust-main
 
 
 # Install servo
