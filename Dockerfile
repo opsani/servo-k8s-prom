@@ -6,7 +6,7 @@ ADD  https://storage.googleapis.com/kubernetes-release/release/v1.16.2/bin/linux
 
 # Install dependencies
 RUN apt update && apt -y install procps tcpdump curl wget
-RUN pip3 install requests PyYAML python-dateutil
+RUN pip3 install requests PyYAML python-dateutil kubernetes
 
 # add prom driver
 ADD https://raw.githubusercontent.com/opsani/servo-prom/master/measure /servo/measure.d/prom-ethos
