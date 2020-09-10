@@ -19,7 +19,6 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py measure.d/
 # add agg driver
 RUN mkdir -p adjust.d
 ADD https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust \
-    https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust.py \
     https://raw.githubusercontent.com/opsani/servo-agg/demo/util.py \
     /servo/
 
@@ -33,6 +32,7 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/servo \
     /servo/
 
 RUN chmod a+rwx /servo/adjust /servo/measure /servo/servo /usr/local/bin/kubectl
+RUN ln -s /servo/adjust.d/adjust.py /servo/adjust.py
 RUN chmod a+rwx /servo/measure.d/prom-ethos
 RUN chmod a+r /servo/adjust.py /servo/measure.py
 RUN chmod a+rx /servo/adjust.d/k8s-adjust-main
