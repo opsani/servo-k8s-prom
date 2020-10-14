@@ -22,8 +22,8 @@ ADD https://raw.githubusercontent.com/opsani/servo/master/measure.py measure.d/
 
 # add agg driver
 RUN mkdir -p adjust.d
-ADD https://raw.githubusercontent.com/opsani/servo-agg/demo/adjust \
-    https://raw.githubusercontent.com/opsani/servo-agg/demo/util.py \
+ADD https://raw.githubusercontent.com/opsani/servo-agg/master/adjust \
+    https://raw.githubusercontent.com/opsani/servo-agg/master/util.py \
     /servo/
 
 # add k8s driver under different names
